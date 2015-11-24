@@ -1,0 +1,24 @@
+#!/bin/sh /etc/rc.common
+# Copyright (C) 2008 OpenWrt.org
+
+START=99
+
+
+start() 
+{
+sleep 2
+portal >/dev/null 2>&1 &
+}
+
+stop() 
+{
+killall portal
+\cp /data/portal.db.bak /data/portal.db 
+}
+
+restart()
+{
+killall portal
+\cp /data/portal.db.bak /data/portal.db 
+portal >/dev/null 2>&1 &
+}
